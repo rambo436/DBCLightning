@@ -1,16 +1,16 @@
 get '/talks/view' do # view all talks
 
-  erb :all_talks
+  erb :'talks/all_talks'
 end
 
 get '/talks/view/:talk_id' do #view specific talk
 
-  erb :single_talk
+  erb :'talks/single_talk'
 end
 
 get '/talks/edit/:talk_id' do # edit one of your talks
 
-  erb :edit_single_talk
+  erb :'talks/edit_single_talk'
 end
 
 put  '/talks/edit/:talk_id' do
