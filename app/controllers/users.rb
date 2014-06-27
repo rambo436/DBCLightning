@@ -1,10 +1,10 @@
 enable :sessions
 
-get '/user/signin' do
+get '/users/signin' do
   erb :"users/sign_in"
 end
 
-post '/user/signin' do
+post '/users/signin' do
   @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
   if @user
     session[:user] = @user
@@ -15,17 +15,17 @@ post '/user/signin' do
   end
 end
 
-get '/user/edit/:id' do #to change password
+get '/users/edit/:id' do #to change password
 
   erb :"users/edit"
 end
 
-put '/user/edit' do #keep eye on this!
+put '/users/edit' do #keep eye on this!
 
   redirect
 end
 
-get '/user/view/:id' do # User views another users profile
+get '/users/:id' do # User views another users profile
 
   erb :"users/view_other_user"
 end
