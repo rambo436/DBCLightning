@@ -1,0 +1,6 @@
+<div class="container">
+  <h2>All upcoming talks</h2>
+  <% @talks.each do |talk| %>
+    <a href="/talks/<%=talk.id%>"><%= talk.title + " " + "by " + talk.user %></a>
+  <%end%>
+</div>

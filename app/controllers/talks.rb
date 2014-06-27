@@ -1,19 +1,19 @@
-get '/talks/view' do # view all talks
-
+get '/talks' do # view all talks #We removed the /edit preceding
+  @talks = Talk.all
   erb :all_talks
 end
 
-get '/talks/view/:talk_id' do #view specific talk
-
-  erb :single_talk
+get '/talks/:talk_id' do #view specific talk #We removed the /edit preceding
+  @talk = Talk.find(params[:talk_id])
+  erb :'talks/single_talk'
 end
 
-get '/talks/edit/:talk_id' do # edit one of your talks
+get '/talks/:talk_id/edit' do # edit one of your talks #We switched the order of edit and :talk_id
 
   erb :edit_single_talk
 end
 
-put  '/talks/edit/:talk_id' do
+put '/talks/:talk_id' do #We switched the order of edit and :talk_id
 
   # will handle with ajax/jquery
   redirect '' #somewhere
