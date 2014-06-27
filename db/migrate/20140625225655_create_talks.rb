@@ -6,8 +6,7 @@ class CreateTalks < ActiveRecord::Migration
       t.belongs_to :tag
       t.string     :title
       t.string     :description
-      t.date       :scheduled_date
-      t.time       :scheduled_time
+      t.datetime   :event_time
       t.integer    :min_rsvp, default: 0
 
       t.timestamps
