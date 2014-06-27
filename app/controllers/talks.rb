@@ -1,4 +1,5 @@
 get '/talks' do
+  @talks = Talk.all
 
   erb :'talks/index'
 end
@@ -23,6 +24,11 @@ end
 
 put 'talks/:tid' do
   @talk = Talk.find(params[:tid])
+  @talk.update( title:       params[:title],
+                description: params[:description],
+                date:        params[:date],
+                time:        params[:time],
+                min_rsvp:    params[:min_rsvp] )
 
   redirect "/talks"
 end
