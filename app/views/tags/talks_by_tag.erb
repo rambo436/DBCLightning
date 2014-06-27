@@ -1,0 +1,6 @@
+<h1>Talks by #<%=@tag.name%></h1>
+<ul>
+  <% @tag.talks.each do |talk| %>
+  <li><a href="/talks/view/<%=talk.id %>"><%=talk.title %></a> by <a href="/user/view/<%=talk.speaker.id%>"><%=talk.speaker.first_name%></a>.</li>
+  <% end %>
+</ul>

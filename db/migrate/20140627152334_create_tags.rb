@@ -1,7 +1,7 @@
 class CreateTags < ActiveRecord::Migration
-  # Don't worry Nat! We will do validations with you!
   def change
     create_table :tags do |t|
+      t.belongs_to :talk
       t.string :name
 
       t.timestamps

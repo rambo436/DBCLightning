@@ -1,0 +1,6 @@
+<div class="container">
+  <h2><%=@talk.title%></h2>
+  <block><%=@talk.description%></block>
+  <p> Come to this talk! It's going down on <%=@talk.scheduled_date%> at <%=@talk.scheduled_time%> </p>
+  <button><a href="/talks/<%=@talk.id%>/edit">Edit this page</a></button>
+</div>
