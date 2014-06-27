@@ -8,9 +8,7 @@ class CreateTalks < ActiveRecord::Migration
       t.string     :description
       t.date       :scheduled_date
       t.time       :scheduled_time
-      t.integer    :vote, default: 0
-      t.integer    :min_vote
-      t.integer    :max_capacity
+      t.integer    :min_rsvp, default: 0
 
       t.timestamps
     end
