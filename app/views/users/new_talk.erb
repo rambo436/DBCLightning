@@ -1,12 +1,11 @@
 <div class="container">
-  <form action="/talk/<%=@talk.id%>" method="post">
-
-    <h4> Edit talk name. </h4>
-    <input cols="40" type="text" name="title" placeholder="<%=@talk.title%>">
+  <form action="/users/>" method="post">
+    <h4> Name your talk. </h4>
+    <input cols="40" type="text" name="title" placeholder="e.g. Version Control in the GitHub Era">
     <br>
 
-    <h4>Edit your talk abstract.</h4>
-     <textarea cols="40" rows="5" name="description" placeholder="<%=@talk.description%>">GitHub is a powerful tool for ensuring strong version control.
+    <h4>Give us a little abstract.</h4>
+     <textarea cols="40" rows="5" name="description" placeholder="e.g. GitHub is a powerful tool for ensuring strong version control.">GitHub is a powerful tool for ensuring strong version control.
      </textarea>
     <br>
 
@@ -21,7 +20,7 @@
     <% actual_month = Time.now.month %>
     <% actual_day = Time.now.day %>
 
-    <h4>Reschedule your talk</h4>
+    <h4>When will you be giving your talk?</h4>
      <b>Year</b>
      <select name="year">
      <% years.each do |year| %>
@@ -67,8 +66,6 @@
     <h4> Tag your talks up! </h4>
     <input type="text" name="tags" placeholder="e.g. #GitHub #VersionControl">
     <br><br>
-    <input type="hidden" name="_method" value="PUT">
     <input type="submit" value="Submit Your Talk!">
   </form>
-</div>
 </div>
