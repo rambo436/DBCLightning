@@ -10,7 +10,8 @@ post '/users/signin' do
     session[:user] = @user
     redirect '/talks/view'
   else
-    "Nice Try Hackers!"
+    @invalid_login = true
+    erb :"users/sign_in"
   end
 end
 
@@ -30,7 +31,7 @@ get '/users/:id' do # User views another users profile
 end
 
 get '/signout' do
-
   session.clear
+
   redirect '/'
 end
