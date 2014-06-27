@@ -16,6 +16,17 @@ get 'talks/:tid/new' do
   erb :'talks/new'
 end
 
+post 'talks/:tid/new' do
+  @talk = Talk.find(params[:tid])
+  @talk.create( title:       params[:title],
+                description: params[:description],
+                date:        params[:date],
+                time:        params[:time],
+                min_rsvp:    params[:min_rsvp] )
+
+  redirect "/talks"
+end
+
 get 'talks/:tid/edit' do
   @talk = Talk.find(params[:tid])
 
