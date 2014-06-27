@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 	has_secure_password
-  has_many :talks, through: :userstalks
-	validates :email, :uniqueness => true
+  has_many :talks, through: :users_talks
+	validates :email, uniqueness: true
 	validates :first_name, presence: true
 	validates :last_name, presence: true
 
