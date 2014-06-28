@@ -10,8 +10,7 @@ get '/talks/view/:talk_id' do #view specific talk
 end
 
 get '/talks' do # view all talks #We removed the /edit preceding
-  @user
-  @talks = Talk.all #talk.user won't work until the migration is pushed
+  @talks = Talk.all.order('created_at DESC') #talk.user won't work until the migration is pushed
   erb :'talks/all_talks'
 end
 
