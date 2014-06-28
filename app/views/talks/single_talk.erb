@@ -3,6 +3,11 @@
   <block><%=@talk.description%></block>
   <p> Come to this talk! It's going down on <%=@talk.event_time%>
   <% if current_user.id == @talk.speaker.id%>
-    <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this page</a></button>
+    <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this talk</a></button>
+    <button class="button">
+     <form method="post" action="/talks/<%=@talk.id%>">
+       <input type="hidden" name="_method" value="DELETE">
+       <input type="submit" value="Delete this talk">
+     </form>
   <% end %>
 </div>

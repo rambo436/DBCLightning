@@ -1,6 +1,9 @@
-<div class="container">
 
-  <a href="/users/<%=session[:user].id%>/new_talk"> Give your own talk! </a>
+<div class="own_talk">
+  <a class= "button orange active" href="/users/<%=session[:user].id%>/new_talk"> Give your own talk! </a>
+</div>
+
+<div class="container">
 
   <h2>All upcoming talks</h2>
   <ul class="imglist">

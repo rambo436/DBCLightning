@@ -1,5 +1,6 @@
 <div class="container">
-  <form action="/talk/<%=@talk.id%>" method="post">
+  <form action="/talks/<%=@talk.id%>" method="post">
+    <input type="hidden" name="_method" value="PUT">
     <h4> Name your talk. </h4>
     <input cols="40" type="text" name="title" value="<%=@talk.title %>">
     <br>
@@ -19,7 +20,6 @@
     <h4> Tag your talks up! </h4>
     <input type="text" name="tags" value="<%=@tag_names%>">
     <br><br>
-    <input type="hidden" name="_method" value="PUT">
     <input type="submit" value="Edit Your Talk!">
   </form>
 </div>

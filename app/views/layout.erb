@@ -21,11 +21,22 @@
 </head>
 <body>
   <nav>
+    <div id="navigation">
+    <% if current_user %>
+    <button class="button2"><a href="/signout">Signout</a></button>
+    <% end %>
+    <button class="button2"><a href="/about">About</a></button>
+  </div>
+  <div>
     <form id="search_bar" method="get" action="">
       <input name="search" placeholder="Search">
-      <input class="button" type="submit" value="Search">
+      <input class="button2" type="submit" value="Search">
     </form>
-  </nav>
+  </div>
+  </nav
+  <pre>
+      <%= session.inspect %>
+  </pre>
   <%= yield %>
 </body>
 </html>

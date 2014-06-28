@@ -1,3 +1,6 @@
+# before do
+#   redirect '/' if !current_user
+# end
 
 get '/talks/view' do # view all talks
   @talks = Talk.all
@@ -49,13 +52,21 @@ post '/submit' do#testing handle
 end
 
 put '/talks/:talk_id' do #We switched the order of edit and :talk_id
-  # @talk = Talk.find(params[:talk_id])
-  # @talk.update( title:       params[:title],
-  #               description: params[:description],
-  #               event_time:        #PARSER,
-  #               min_rsvp:    params[:min_rsvp] )
-  # will handle with ajax/jquery
-  redirect '/' #somewhere
+  @talk = Talk.find(params[:talk_id])
+  @talk.update( title:       params[:title],
+  description: params[:description],
+  event_time:  params[:dateof] + " " + params[:timeof],
+  min_rsvp:    params[:min_rsvp] )
+  tags = parse_tags(params["tags"]) #array of tag names
+  tags.each do |tag|
+    unless Tag.where(name: tag).nil?
+      object_tag = Tag.create(name: tag)
+      Hashtag.create(talk_id: @talk.id, tag_id: object_tag.id)
+    else
+      Hashtag.create(talk_id: @talk.id, tag_id: Tag.find_by(name: tag).id)
+    end
+    redirect '/'
+  end
 end
 
 delete '/talks/:talk_id' do
