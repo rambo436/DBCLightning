@@ -3,6 +3,9 @@
   <a href="/users/<%=session[:user].id%>/new_talk"> Give your own talk! </a>
 
   <h2>You are viewing talks by <%= @user.first_name + " " + @user.last_name%> </h2>
+
+  <image src = "http://www.gravatar.com/avatar/<%=@email%>" >
+
   <ul>
   <% @talks.each do |talk| %>
   <li>

@@ -33,6 +33,7 @@ end
 get '/users/:id' do # User views another users profile
   @user = User.find(params[:id])
   @talks= Talk.where(speaker_id: @user.id).order('created_at DESC')
+  @email = gravatar_hash(@user.email)
   erb :"users/view_other_user"
 end
 
