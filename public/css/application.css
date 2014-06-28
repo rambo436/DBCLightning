@@ -76,3 +76,41 @@ nav {
 .buttona:hover:before {
 	left: 80%;
 }
+
+/*Cool unordered list*/
+.imglist ul{
+  margin:0px;
+}
+
+.imglist li{
+  font-size:18px;
+  margin-left:25px;
+  padding:0px;
+  list-style:url(/images/arrow.png);
+  line-height:30px;
+}
+
+.imglist li a:link, .imglist li a:visited{
+  color: white;
+  text-decoration:none;
+}
+
+.imglist li a:hover{
+  color: gray;
+  padding:2px;
+  border:none 0px #000000;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+#take_survey {
+  margin-top: 130px;
+  margin-left: 20px;
+}
+
+.user_surveys h2 {
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}

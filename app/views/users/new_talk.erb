@@ -9,64 +9,15 @@
      </textarea>
     <br>
 
-    <% years = [2014, 2015] %>
-    <% months = (1..12).to_a %>
-    <% days = (1..31).to_a %>
-    <% hours = (1..12).to_a %>
-    <% minutes = [15,30,45,"00"] %>
-    <% am_pm = ["AM", "PM"] %>
-
-    <% actual_year = Time.now.year %>
-    <% actual_month = Time.now.month %>
-    <% actual_day = Time.now.day %>
-
     <h4>When will you be giving your talk?</h4>
 
-     <b>Year</b>
-     <select name="year">
-     <% years.each do |year| %>
-      <option value="<%=actual_year%>" selected> <%=actual_year%> </option>
-     <% end %>
-     </select>
-
-    <b> Month </b>
-    <select name="month">
-    <% months.each do |month| %>
-    <option value="<%=actual_month%>" selected> <%=actual_month%> </option>
-    <% end %>
-    </select>
-
-    <b> Day </b>
-     <select name="day">
-     <% days.each do |day| %>
-      <option value="<%=actual_day%>" selected> <%=actual_day %> </option>
-     <% end %>
-     </select>
-
-     <b> Hour (EST) </b>
-     <select name = "hour">
-     <% hours.each do |hour| %>
-      <option value=<%=hour%>> 6 </option>
-     <% end %>
-     </select>
-
-     <b> Minute </b>
-     <select name="minute">
-     <% minutes.each do |minute| %>
-      <option value=<%=minute%> selected> 00 </option>
-     <% end %>
-     </select>
-
-     <b> AM/PM </b>
-     <select name="am_pm">
-     <% am_pm.each do |zone| %>
-      <option value=<%=zone%> selected> <%=am_pm[1]%> </option>
-     <% end %>
-     </select>
-
+    <input type="date" name="dateof" min="<%=Time.now.to_s[0..9] %>">
+    <input type="time" name="timeof" min="09:00" max="17:00">
+    <h4>How many guests will make it worth your time?</h4>
+    <input type="number" placeholder="ex. 5" min="1" max="65">
     <h4> Tag your talks up! </h4>
     <input type="text" name="tags" placeholder="e.g. #GitHub #VersionControl">
     <br><br>
-    <input type="submit" value="Submit Your Talk!">
+    <input class="button" type="submit" value="Submit Your Talk!">
   </form>
 </div>

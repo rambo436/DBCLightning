@@ -27,14 +27,19 @@ end
 
 
 post '/submit' do#testing handle
-  talk = Talk.create(speaker_id: current_user.id, title: params["title"], 
-                     description: params["description"]) #need to pass input
-  tags = parse_tags(params["tags"]) #array of tag names
-  tags.each do |tag|
-    current = Tag.create(name: tag)
-    Hashtag.create(tag_id: current.id, talk_id: talk.id)
-  end
-  redirect '/talks'
+  print params
+  event_time = params[:dateof] + ' ' + params[:timeof]
+  p event_time
+  # talk = Talk.create(speaker_id: current_user.id, title: params["title"],
+  #                    description: params["description"]) #need to pass input
+  #
+  #
+  # tags = parse_tags(params["tags"]) #array of tag names
+  # tags.each do |tag|
+  #   current = Tag.create(name: tag)
+  #   Hashtag.create(tag_id: current.id, talk_id: talk.id)
+  # end
+  # redirect '/talks'
 end
 
 put '/talks/:talk_id' do #We switched the order of edit and :talk_id
