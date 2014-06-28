@@ -1,0 +1,15 @@
+<div class="container">
+  
+  <a href="/users/<%=session[:user].id%>/new_talk"> Give your own talk! </a>
+
+  <h2>You are viewing talks by <%= @user.first_name + " " + @user.last_name%> </h2>
+
+  <image src = "http://www.gravatar.com/avatar/<%=@email%>" >
+
+  <ul>
+  <% @talks.each do |talk| %>
+  <li>
+    <a href="/talks/<%=talk.id%>"><%= talk.title%></a> by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a>
+  </li><br>
+  <%end%>
+</div>
