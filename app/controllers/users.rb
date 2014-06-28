@@ -15,6 +15,11 @@ post '/users/signin' do
   end
 end
 
+get '/users/:id/new_talk' do
+  @user = User.find(params[:id])
+  erb :"users/new_talk"
+end
+
 get '/users/edit/:id' do #to change password
 
   erb :"users/edit"
@@ -22,16 +27,17 @@ end
 
 put '/users/edit' do #keep eye on this!
 
-  redirect
+  redirect '/'
 end
 
 get '/users/:id' do # User views another users profile
-
+  @user = User.find(params[:id])
+  @talks= Talk.where(speaker_id: @user.id).order('created_at DESC')
+  @email = gravatar_hash(@user.email)
   erb :"users/view_other_user"
 end
 
 get '/signout' do
   session.clear
-
   redirect '/'
 end
