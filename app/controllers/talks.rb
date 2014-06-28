@@ -22,7 +22,13 @@ end
 get '/talks/:talk_id/edit' do # edit one of your talks #We switched the order of edit and :talk_id
   # Now working with event_time - Armen to lead parsing effort :-)
   @talk = Talk.find(params[:talk_id])
-  erb :edit_single_talk
+  p @tags = @talk.tags #array of tag objects
+  @tag_names = []
+  @tags.each do |tag|
+    p @tag_names << ("#" + tag.name)
+  end
+  @tag_names = @tag_names.join(" ")
+  erb :'/talks/edit_single_talk'
 end
 
 

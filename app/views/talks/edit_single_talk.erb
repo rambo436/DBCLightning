@@ -1,63 +1,26 @@
 <div class="container">
   <form action="/talk/<%=@talk.id%>" method="post">
-
-    <h4> Edit talk name. </h4>
-    <input cols="40" type="text" name="title" placeholder="<%=@talk.title%>">
+    <h4> Name your talk. </h4>
+    <input cols="40" type="text" name="title" value="<%=@talk.title %>">
     <br>
 
-    <h4>Edit your talk abstract.</h4>
-     <textarea cols="40" rows="5" name="description" placeholder="<%=@talk.description%>">GitHub is a powerful tool for ensuring strong version control.
-     </textarea>
+    <h4>Give us a little abstract.</h4>
+    <textarea cols="40" rows="5" name="description"><%=@talk.description %>
+    </textarea>
     <br>
 
-    <h4>Reschedule your talk</h4>
-     <b>Year</b>
-     <select name="year">
-     <% years.each do |year| %>
-      <option value="<%=actual_year%>" selected> <%=actual_year%> </option>
-     <% end %>
-     </select>
+    <h4>When will you be giving your talk?</h4>
+    <input type="date" name="dateof" value= "<%= @talk.event_time.to_s[0..9] %>" min="<%=Time.now.to_s[0..9] %>">
+    <input type="time" name="timeof" value= "<%= @talk.event_time.to_s[11..15] %>" min="09:00" max="17:00">
 
-    <b> Month </b>
-    <select name="month">
-    <% months.each do |month| %>
-    <option value="<%=actual_month%>" selected> <%=actual_month%> </option>
-    <% end %>
-    </select>
-
-    <b> Day </b>
-     <select name="day">
-     <% days.each do |day| %>
-      <option value="<%=actual_day%>" selected> <%=actual_day %> </option>
-     <% end %>
-     </select>
-
-     <b> Hour (EST) </b>
-     <select name = "hour">
-     <% hours.each do |hour| %>
-      <option value=<%=hour%>> 6 </option>
-     <% end %>
-     </select>
-
-     <b> Minute </b>
-     <select name="minute">
-     <% minutes.each do |minute| %>
-      <option value=<%=minute%> selected> 00 </option>
-     <% end %>
-     </select>
-
-     <b> AM/PM </b>
-     <select name="am_pm">
-     <% am_pm.each do |zone| %>
-      <option value=<%=zone%> selected> <%=am_pm[1]%> </option>
-     <% end %>
-     </select>
+    <h4>How many guests will make it worth your time?</h4>
+    <input type="number" value="<%=@talk.min_rsvp%>" min="1" max="65">
 
     <h4> Tag your talks up! </h4>
-    <input type="text" name="tags" placeholder="e.g. #GitHub #VersionControl">
+    <input type="text" name="tags" value="<%=@tag_names%>">
     <br><br>
     <input type="hidden" name="_method" value="PUT">
-    <input type="submit" value="Submit Your Talk!">
+    <input type="submit" value="Edit Your Talk!">
   </form>
 </div>
 </div>
