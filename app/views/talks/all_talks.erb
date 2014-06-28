@@ -15,8 +15,8 @@
     </div>
     <a href="/talks/<%=talk.id%>"><%= talk.title.capitalize%></a><br>
      by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
-    <p class="subtitle"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %><br>
-    <%=talk.event_time%></p>
+    <p class="subtitle"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
+    <p class="subtitle"><%=talk.event_time.to_s[0..9] + " at " + datetime_am_pm(talk.event_time)%></p>
   </li><br>
   <%end%>
 </div>
