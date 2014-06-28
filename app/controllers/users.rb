@@ -31,12 +31,12 @@ put '/users/edit' do #keep eye on this!
 end
 
 get '/users/:id' do # User views another users profile
-
+  @user = User.find(params[:id])
+  @talks= Talk.where(speaker_id: @user.id).order('created_at DESC')
   erb :"users/view_other_user"
 end
 
 get '/signout' do
   session.clear
-
   redirect '/'
 end
