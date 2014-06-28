@@ -1,11 +1,11 @@
 
 get '/talks/view' do # view all talks
-
+  @talks = Talk.all
   erb :'talks/all_talks'
 end
 
 get '/talks/view/:talk_id' do #view specific talk
-
+  @talk = Talk.find(params[:talk_id])
   erb :'talks/single_talk'
 end
 
@@ -25,15 +25,17 @@ get '/talks/:talk_id/edit' do # edit one of your talks #We switched the order of
   erb :edit_single_talk
 end
 
-# put '/talks/:talk_id' do #We switched the order of edit and :talk_id
-#   @talk = Talk.find(params[:talk_id])
-#   @talk.update( title:       params[:title],
-#                 description: params[:description],
-#                 event_time:        #PARSER,
-#                 min_rsvp:    params[:min_rsvp] )
-#   # will handle with ajax/jquery
-#   redirect '' #somewhere
-# end
+put '/talks/:talk_id' do #We switched the order of edit and :talk_id
+  params 
+
+  # @talk = Talk.find(params[:talk_id])
+  # @talk.update( title:       params[:title],
+  #               description: params[:description],
+  #               event_time:        #PARSER,
+  #               min_rsvp:    params[:min_rsvp] )
+  # will handle with ajax/jquery
+  redirect '' #somewhere
+end
 
 delete '/talks/:talk_id' do
   @talk = Talk.find(params[:talk_id])

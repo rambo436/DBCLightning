@@ -15,6 +15,11 @@ post '/users/signin' do
   end
 end
 
+get '/users/:id/new_talk' do
+  @user = User.find(params[:id])
+  erb :"users/new_talk"
+end
+
 get '/users/edit/:id' do #to change password
 
   erb :"users/edit"
@@ -22,7 +27,7 @@ end
 
 put '/users/edit' do #keep eye on this!
 
-  redirect
+  redirect '/'
 end
 
 get '/users/:id' do # User views another users profile
