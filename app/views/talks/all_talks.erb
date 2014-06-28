@@ -5,8 +5,15 @@
   <h2>All upcoming talks</h2>
   <ul class="imglist">
   <% @talks.each do |talk| %>
+  <% email = gravatar_hash(talk.speaker.email)%>
   <li>
-    <a href="/talks/<%=talk.id%>"><%= talk.title%></a> by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a>
+    <div id=prof_pic>
+    <image src="http://www.gravatar.com/avatar/<%=email%>">
+    </div>
+    <a href="/talks/<%=talk.id%>"><%= talk.title.capitalize%></a><br>
+     by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
+    <p class="subtitle"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %><br>
+    <%=talk.event_time%></p>
   </li><br>
   <%end%>
 </div>

@@ -77,6 +77,16 @@ nav {
 	left: 80%;
 }
 
+#prof_pic {
+  float: left;
+  margin-top: auto;
+}
+
+.subtitle{
+  font-size: 15px;
+  margin-top: 0px;
+}
+
 /*Cool unordered list*/
 .imglist ul{
   margin:0px;
@@ -88,6 +98,7 @@ nav {
   padding:0px;
   list-style:url(/images/arrow.png);
   line-height:30px;
+  /*border: 1px solid black;*/
 }
 
 .imglist li a:link, .imglist li a:visited{

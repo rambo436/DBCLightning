@@ -2,5 +2,7 @@
   <h2><%=@talk.title%></h2>
   <block><%=@talk.description%></block>
   <p> Come to this talk! It's going down on <%=@talk.event_time%>
-  <button><a href="/talks/<%=@talk.id%>/edit">Edit this page</a></button>
+  <% if current_user.id == @talk.speaker.id%>
+    <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this page</a></button>
+  <% end %>
 </div>
