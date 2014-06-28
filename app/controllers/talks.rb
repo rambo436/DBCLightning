@@ -1,11 +1,11 @@
 
 get '/talks/view' do # view all talks
-
+ @talk = Talk.all
   erb :'talks/all_talks'
 end
 
 get '/talks/view/:talk_id' do #view specific talk
-
+  @talk = Talk.find(params[:talk_id])
   erb :'talks/single_talk'
 end
 

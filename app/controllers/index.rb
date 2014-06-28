@@ -1,4 +1,4 @@
 get '/' do
   # Look in app/views/index.erb
-  redirect "/user/signin"
+  redirect "/users/signin"
 end
