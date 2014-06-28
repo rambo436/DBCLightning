@@ -75,3 +75,10 @@ delete '/talks/:talk_id' do
   # will handle with ajax/jquery
   redirect "/talks"
 end
+
+get '/talks/:talk_id/vote' do
+  @talk = Talk.find(params[:talk_id])
+  @talk.update(current_votes: @talk.current_votes + 1)
+  content_type :json
+  {votes: @talk.current_votes, min_votes: @talk.min_rsvp}.to_json
+end

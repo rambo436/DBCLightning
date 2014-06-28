@@ -1,7 +1,11 @@
 <div class="container">
   <h2><%=@talk.title%></h2>
+  <p> by <a href="/users/<%=@talk.speaker.id%>"> <%=@talk.speaker.first_name + " " + @talk.speaker.last_name %> </a></p>
+  <center><image src = "http://www.gravatar.com/avatar/<%=@talk.speaker.email%>" ></center>
+  <br>
   <block><%=@talk.description%></block>
-  <p> Come to this talk! It's going down on <%=@talk.event_time%>
+  <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + @talk.event_time.to_s[11..15] + "!" %>
+  <p id="vote_counter"> <%= @talk.current_votes.to_s + " out of " + @talk.min_rsvp.to_s + " votes to go live!" %> </p>
   <% if current_user.id == @talk.speaker.id%>
     <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this talk</a></button>
     <button class="button">
@@ -10,4 +14,9 @@
        <input type="submit" value="Delete this talk">
      </form>
   <% end %>
+  <br>
+  <% if @talk.speaker.id != current_user.id %>
+    <button class="upvote" id="<%=@talk.id%>"> COUNT ME IN! </button>
+  <% end %>
+  <p id="hidden_ajax">See you at the talk!</p>
 </div>
