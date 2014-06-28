@@ -1,6 +1,6 @@
 
 get '/talks/view' do # view all talks
- @talk = Talk.all
+  @talks = Talk.all
   erb :'talks/all_talks'
 end
 

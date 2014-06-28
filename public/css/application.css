@@ -1,9 +1,36 @@
 .container {
   margin: 20px auto;
   width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+  padding: 5px 20px 20px 20px;
+  /*border: 1px solid black;*/
+  background-color: rgba(238, 121, 112, 0.9);
+  text-align: center;
+  color: #fff;
+  margin: 10% auto;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 th {
   text-align: left;
+}
+
+body{
+  background-image: url("/dbcbackground.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+nav {
+  border: 1px solid black;
+  background-color: #e54739;
+  height: 50px;
+  /*position: absolute;*/
+}
+
+#search_bar{
+  padding-top: 12px;
+  text-align: right;
 }
