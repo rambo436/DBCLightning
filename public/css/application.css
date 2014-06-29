@@ -35,6 +35,20 @@ nav {
   /*position: absolute;*/
 }
 
+#under_vote {
+  background-color: red;
+}
+
+#over_vote {
+  background-color: green;
+}
+
+#medium_vote{
+  background-color: orange;
+}
+
+
+
 #search_bar{
   padding-top: 12px;
   padding-right: 15px;

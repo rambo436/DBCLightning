@@ -4,8 +4,12 @@
   <center><image src = "http://www.gravatar.com/avatar/<%=@talk.speaker.email%>" ></center>
   <br>
   <block><%=@talk.description%></block>
-  <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + @talk.event_time.to_s[11..15] + "!" %>
-  <p id="vote_counter"> <%= @talk.current_votes.to_s + " out of " + @talk.min_rsvp.to_s + " votes to go live!" %> </p>
+  <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + datetime_am_pm(@talk.event_time) + "!" %>
+  <% if @talk.current_votes < @talk.min_rsvp %>
+    <p id="vote_counter"> <%= @talk.current_votes.to_s + " out of " + @talk.min_rsvp.to_s + " votes to go live!" %> </p>
+  <% else %>
+    <p id="vote_counter"> <%= "Lightning! " + @talk.current_votes.to_s + " out of " + @talk.min_rsvp.to_s + " votes - we're live!" %> </p>
+  <% end %>
   <% if current_user.id == @talk.speaker.id%>
     <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this talk</a></button>
     <button class="button">

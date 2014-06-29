@@ -15,7 +15,12 @@
     </div>
     <a href="/talks/<%=talk.id%>"><%= talk.title.capitalize%></a><br>
      by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
-    <p class="subtitle"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
+
+    <% vote_color = "under_vote" if talk.current_votes < talk.min_rsvp.to_i %>
+    <% vote_color = "over_vote" if talk.current_votes >= talk.min_rsvp.to_i %>
+    <% vote_color = "medium_vote" if (talk.current_votes.to_f / talk.min_rsvp.to_f) >= 0.5 && (talk.current_votes.to_f / talk.min_rsvp.to_f) < 1.0 %>
+
+    <p id="<%=vote_color%>"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
     <p class="subtitle"><%=talk.event_time.to_s[0..9] + " at " + datetime_am_pm(talk.event_time)%></p>
   </li><br>
   <%end%>
