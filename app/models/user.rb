@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   # has_many :presented_talks, through: :events, source: :user
   has_many :presented_talks, class_name: 'Talk', foreign_key: :speaker_id
   # has_many :attendances, -> (user) { where attending: true }, class_name: 'Event'
-  
+
   def attendances
-    events.attending
+    events.where(attending: true)
   end
 end
 

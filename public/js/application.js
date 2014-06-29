@@ -13,11 +13,12 @@ $(document).ready(function() {
       $("#hidden_ajax").fadeIn();
       $("#vote_counter").text(response.votes + ' out of ' + response.min_votes + ' votes to go live!')
       if (response.votes >= response.min_votes) {
-        $("#vote_counter").text('Lightning! ' + response.votes + ' out of ' + response.min_votes + " votes - we're live!")  
+        $("#vote_counter").text('Lightning! ' + response.votes + ' out of ' + response.min_votes + " votes - we're live!")
       }
     });
     ajaxRequest.fail(function(response){
       console.log("Fail!");
+      $(".upvote").fadeOut();
     });
   });
 });

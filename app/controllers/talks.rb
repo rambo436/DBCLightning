@@ -35,7 +35,7 @@ get '/talks/:talk_id/edit' do # edit one of your talks #We switched the order of
 end
 
 
-post '/submit' do#testing handle
+post '/submit' do #create a new talk
   event_time = params[:dateof] + ' ' + params[:timeof]
   p talk = Talk.create(speaker_id: current_user.id, title: params["title"], description: params["description"], event_time: event_time, min_rsvp: params["min_rsvp"]) #need to pass input
   p talk.valid?
@@ -47,7 +47,7 @@ post '/submit' do#testing handle
   redirect '/talks'
 end
 
-put '/talks/:talk_id' do #We switched the order of edit and :talk_id
+put '/talks/:talk_id' do #edit a talk
   @talk = Talk.find(params[:talk_id])
   @talk.update( title: params[:title],
   description: params[:description],
@@ -65,7 +65,7 @@ put '/talks/:talk_id' do #We switched the order of edit and :talk_id
   end
 end
 
-delete '/talks/:talk_id' do
+delete '/talks/:talk_id' do #delete a talk
   @talk = Talk.find(params[:talk_id])
   @talk.destroy
   # will handle with ajax/jquery
@@ -75,6 +75,9 @@ end
 get '/talks/:talk_id/vote' do
   @talk = Talk.find(params[:talk_id])
   @talk.update(current_votes: @talk.current_votes + 1)
-  content_type :json
-  {votes: @talk.current_votes, min_votes: @talk.min_rsvp}.to_json
+  if current_user.events.find_by_talk_id(@talk.id).attending == false
+    content_type :json
+    {votes: @talk.current_votes, min_votes: @talk.min_rsvp}.to_json
+    current_user.events.find_by_talk_id(@talk.id).update(attending: true)
+  end
 end

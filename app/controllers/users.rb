@@ -7,7 +7,7 @@ end
 post '/users/signin' do
   @user = User.find_by(email: params[:email]).try(:authenticate, params[:password])
   if @user
-    session[:user] = @user
+    session[:id] = @user.id
     redirect '/talks/view'
   else
     @invalid_login = true

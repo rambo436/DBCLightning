@@ -22,7 +22,7 @@
 <body>
   <nav>
     <div id="navigation">
-    <% if current_user %>
+    <% if logged_in? %>
     <button class="button2"><a href="/signout">Signout</a></button>
     <% end %>
     <button class="button2"><a href="/about">About</a></button>

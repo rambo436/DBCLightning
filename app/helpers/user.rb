@@ -5,7 +5,13 @@ helpers do
 require 'digest/md5'
 
   def current_user
-    session["user"]
+    if session[:id]
+      User.find(session[:id])
+    end
+  end
+
+  def logged_in?
+    !current_user.nil?
   end
 
   def gravatar_hash(email)

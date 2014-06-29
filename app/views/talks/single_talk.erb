@@ -19,8 +19,11 @@
      </form>
   <% end %>
   <br>
-  <% if @talk.speaker.id != current_user.id %>
+  <% if @talk.speaker.id != current_user.id || current_user.events.find_by_talk_id(@talk.id).attending == false %>
     <button class="upvote" id="<%=@talk.id%>"> COUNT ME IN! </button>
   <% end %>
   <p id="hidden_ajax">See you at the talk!</p>
+  <% if current_user.events.find_by_talk_id(@talk.id).attending == true %>
+  <p> You've already voted for this talk. See you there! </p>
+  <% end %>
 </div>
