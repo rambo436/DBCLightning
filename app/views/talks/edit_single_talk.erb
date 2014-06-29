@@ -15,7 +15,7 @@
     <input type="time" name="timeof" value= "<%= @talk.event_time.to_s[11..15] %>" min="09:00" max="17:00">
 
     <h4>How many guests will make it worth your time?</h4>
-    <input type="number" value="<%=@talk.min_rsvp%>" min="1" max="65">
+    <input type="number" name="min_rsvp" value="<%=@talk.min_rsvp%>" value="0" min="1" max="65">
 
     <h4> Tag your talks up! </h4>
     <input type="text" name="tags" value="<%=@tag_names%>">

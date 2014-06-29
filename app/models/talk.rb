@@ -1,4 +1,5 @@
 class Talk < ActiveRecord::Base
+  # validates_presence_of :min_rsvp
   belongs_to :speaker, class_name: "User"
   belongs_to :guest
 
@@ -7,4 +8,6 @@ class Talk < ActiveRecord::Base
 
   has_many :hashtags
   has_many :tags, through: :hashtags, source: :tag
+
+
 end

@@ -36,24 +36,20 @@ end
 
 
 post '/submit' do#testing handle
-  print params
   event_time = params[:dateof] + ' ' + params[:timeof]
-  p event_time
-  # talk = Talk.create(speaker_id: current_user.id, title: params["title"],
-  #                    description: params["description"]) #need to pass input
-  #
-  #
-  # tags = parse_tags(params["tags"]) #array of tag names
-  # tags.each do |tag|
-  #   current = Tag.create(name: tag)
-  #   Hashtag.create(tag_id: current.id, talk_id: talk.id)
-  # end
-  # redirect '/talks'
+  p talk = Talk.create(speaker_id: current_user.id, title: params["title"], description: params["description"], event_time: event_time, min_rsvp: params["min_rsvp"]) #need to pass input
+  p talk.valid?
+  tags = parse_tags(params["tags"]) #array of tag names
+  tags.each do |tag|
+    current = Tag.create(name: tag)
+    Hashtag.create(tag_id: current.id, talk_id: talk.id)
+  end
+  redirect '/talks'
 end
 
 put '/talks/:talk_id' do #We switched the order of edit and :talk_id
   @talk = Talk.find(params[:talk_id])
-  @talk.update( title:       params[:title],
+  @talk.update( title: params[:title],
   description: params[:description],
   event_time:  params[:dateof] + " " + params[:timeof],
   min_rsvp:    params[:min_rsvp] )
@@ -65,7 +61,7 @@ put '/talks/:talk_id' do #We switched the order of edit and :talk_id
     else
       Hashtag.create(talk_id: @talk.id, tag_id: Tag.find_by(name: tag).id)
     end
-    redirect '/'
+    redirect '/talks'
   end
 end
 
