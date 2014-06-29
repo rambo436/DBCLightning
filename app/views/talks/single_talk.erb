@@ -19,8 +19,15 @@
      </form>
   <% end %>
   <br>
+
+  <% if current_user.events.find_by_talk_id(@talk.id).attending == false %>
     <button class="up_vote" id="<%=@talk.id%>"> ATTENDING </button>
+    <button class="down_vote" id="<%=@talk.id%>" disabled> NOT ATTENDING </button>
+  <% end %>
+  <% if current_user.events.find_by_talk_id(@talk.id).attending == true %>
+    <button class="up_vote" id="<%=@talk.id%>" disabled> ATTENDING </button>
     <button class="down_vote" id="<%=@talk.id%>"> NOT ATTENDING </button>
+  <% end %>
   <p> <strong> Here's all the DBC students attending this talk: </strong></p>
   <% @guests.each do |guest| %>
     <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(guest.email)%>" >
