@@ -7,11 +7,6 @@ get '/talks/view' do # view all talks
   erb :'talks/all_talks'
 end
 
-# get '/talks/view/:talk_id' do #view specific talk
-#   @talk = Talk.find(params[:talk_id])
-#   erb :'talks/single_talk'
-# end
-
 get '/talks' do # view all talks #We removed the /edit preceding
   @talks = Talk.all.order('created_at DESC')
   erb :'talks/all_talks'
@@ -20,6 +15,7 @@ end
 get '/talks/:talk_id' do #view specific talk #We removed the /edit preceding
   @talk = Talk.find(params[:talk_id])
   @users = User.all
+  @tags = @talk.tags
   erb :'talks/single_talk'
 end
 
@@ -39,11 +35,12 @@ end
 post '/submit' do #create a new talk
   event_time = params[:dateof] + ' ' + params[:timeof]
   p params["minrsvp"]
-  talk = Talk.create(speaker_id: current_user.id, title: params["title"], description: params["description"], event_time: event_time, min_rsvp: params["min_rsvp"].to_i) #need to pass input
+  talk = Talk.create(speaker_id: current_user.id, title: params["title"], description: params["description"], event_time: event_time, min_rsvp: params["min_rsvp"].to_i)
+  Event.create(user_id: current_user.id, talk_id: talk.id)
   talk.valid?
   tags = parse_tags(params["tags"]) #array of tag names
   tags.each do |tag|
-    current = Tag.create(name: tag)
+    current = Tag.where(name: tag).first_or_create
     Hashtag.create(tag_id: current.id, talk_id: talk.id)
   end
   redirect '/talks'

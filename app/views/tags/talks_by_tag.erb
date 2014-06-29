@@ -1,6 +1,27 @@
-<h1>Talks by #<%=@tag.name%></h1>
-<ul>
-  <% @tag.talks.each do |talk| %>
-  <li><a href="/talks/view/<%=talk.id %>"><%=talk.title %></a> by <a href="/user/view/<%=talk.speaker.id%>"><%=talk.speaker.first_name%></a>.</li>
-  <% end %>
-</ul>
+
+<div class="own_talk">
+  <a class= "button orange active" href="/users/<%=current_user.id%>/new_talk"> Give your own talk! </a>
+</div>
+
+<div class="container">
+
+  <h2>All upcoming talks tagged #<%= @tag.name %> </h2>
+  <ul class="imglist">
+  <% @talks.each do |talk| %>
+  <% email = gravatar_hash(talk.speaker.email)%>
+  <li>
+    <div id=prof_pic>
+    <image src="http://www.gravatar.com/avatar/<%=email%>">
+    </div>
+    <a href="/talks/<%=talk.id%>"><%= talk.title.capitalize%></a><br>
+     by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
+
+    <% vote_color = "under_vote" if talk.current_votes < talk.min_rsvp.to_i %>
+    <% vote_color = "over_vote" if talk.current_votes >= talk.min_rsvp.to_i %>
+    <% vote_color = "medium_vote" if (talk.current_votes.to_f / talk.min_rsvp.to_f) >= 0.5 && (talk.current_votes.to_f / talk.min_rsvp.to_f) < 1.0 %>
+
+    <p id="<%=vote_color%>"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
+    <p class="subtitle"><%=talk.event_time.to_s[0..9] + " at " + datetime_am_pm(talk.event_time)%></p>
+  </li><br>
+  <%end%>
+</div>

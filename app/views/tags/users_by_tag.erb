@@ -1,6 +1,0 @@
-<h1>Speakers who have used #<%=@tag.name%></h1>
-<ul>
-  <% @tag.speakers.each do |speaker| %>
-  <li><a href="/talks/view/<%=speaker.id %>"><%=speaker.title %></a> by <a href="/user/view/<%=speaker.speaker.id%>"><%=speaker.first_name%></a>.</li>
-  <% end %>
-</ul>
