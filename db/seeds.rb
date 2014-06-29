@@ -29,6 +29,6 @@ talks = Talk.all
 users = User.all
 talks.each do |talk|
   users.each do |user|
-    Event.create(user_id: user.id, talk_id: talk.id, attending: [true, false].sample)
+    Event.create(user_id: user.id, talk_id: talk.id, attending: false)
   end
 end

@@ -9,5 +9,9 @@ class Talk < ActiveRecord::Base
   has_many :hashtags
   has_many :tags, through: :hashtags, source: :tag
 
+  def actual_guests
+    Talk.guests
+  end
+
 
 end

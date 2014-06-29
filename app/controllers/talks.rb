@@ -19,7 +19,7 @@ end
 
 get '/talks/:talk_id' do #view specific talk #We removed the /edit preceding
   @talk = Talk.find(params[:talk_id])
-  @guests = @talk.guests
+  @users = User.all
   erb :'talks/single_talk'
 end
 

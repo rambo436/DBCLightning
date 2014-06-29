@@ -9,11 +9,11 @@ $(document).ready(function() {
     });
     ajaxRequest.done(function(response){
       console.log("Success");
-      if (response.attending == true) {
+      if (response.attending === true) {
         $(".up_vote").prop('disabled', true);
         $(".down_vote").prop('disabled', false); //disable by class
       };
-      if (response.attending == false) {
+      if (response.attending === false) {
         $(".down_vote").prop('disabled', true);
         $(".up_vote").prop('disabled', false);
       };

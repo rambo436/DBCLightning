@@ -29,8 +29,11 @@
     <button class="down_vote" id="<%=@talk.id%>"> NOT ATTENDING </button>
   <% end %>
   <p> <strong> Here's all the DBC students attending this talk: </strong></p>
-  <% @guests.each do |guest| %>
-    <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(guest.email)%>" >
+  <% @users.each do |user| %>
+    <%= user.events.find_by(talk_id: @talk.id).attending == true %> 
+    <% if user.events.find_by(talk_id: @talk.id).attending == true %>
+      <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>" >
+    <% end %>
   <% end %>
 
 
