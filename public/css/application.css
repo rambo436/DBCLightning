@@ -1,3 +1,9 @@
+
+/*#02a9b9 DBC BLUE*/
+/*#fff DBC WHITE*/
+/*#333 DBC DARK GRAY*/
+
+
 .container {
   margin: 20px auto;
   width: 600px;
@@ -22,11 +28,13 @@ th {
 }
 
 body{
+  text-align: center;
   background-image: url("/dbcbackground.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
   background-attachment: fixed;
+  font-family: 'Istok Web', sans-serif;
 }
 
 nav {
@@ -111,8 +119,13 @@ nav {
 .imglist ul{
   margin:0px;
 }
+.imglist{
+  padding-left: 20px;
+  padding-right: 20px;
+}
 
 .imglist li{
+
   font-size:18px;
   margin-left:25px;
   padding:0px;
@@ -150,12 +163,6 @@ nav {
   text-align: center;
   font-size: 25px;
 }
-
-body { text-align: center; padding: 40px; background: #F5F5F5; }
-.container { width: 500px; text-align: center; margin: auto;}
-.copyright { margin-top: 50px; font-size: 12px; text-transform: uppercase; }
-.copyright a { text-decoration: none; padding: 5px;background: #c0392b; color: #FFFFFF; }
-.copyright a:hover { background: transparent; color: #c0392b; }
 
 .button {
   display: inline-block;
