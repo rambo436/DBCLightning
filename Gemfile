@@ -19,6 +19,7 @@ gem 'shotgun'
 
 gem 'bcrypt'
 gem 'rspec'
+gem 'faker'
 
 group :test do
   gem 'faker'
