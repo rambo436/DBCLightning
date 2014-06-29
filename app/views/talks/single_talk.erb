@@ -19,14 +19,9 @@
      </form>
   <% end %>
   <br>
-  <% if @talk.speaker.id != current_user.id && current_user.events.find_by_talk_id(@talk.id).attending == false %>
-    <button class="upvote" id="<%=@talk.id%>"> COUNT ME IN! </button>
-  <% end %>
-  <p id="hidden_ajax">See you at the talk!</p>
-  <% if current_user.events.find_by_talk_id(@talk.id).attending == true %>
-  <p class="red_bold"> You've already voted for this talk. See you there! </p>
-  <% end %>
-  <p style="color: red;"> <strong> Here's all the DBC students attending this talk: </strong></p>
+    <button class="up_vote" id="<%=@talk.id%>"> ATTENDING </button>
+    <button class="down_vote" id="<%=@talk.id%>"> NOT ATTENDING </button>
+  <p> <strong> Here's all the DBC students attending this talk: </strong></p>
   <% @guests.each do |guest| %>
     <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(guest.email)%>" >
   <% end %>
