@@ -1,7 +1,7 @@
 <div class="container">
   <h2><%=@talk.title%></h2>
   <p> by <a href="/users/<%=@talk.speaker.id%>"> <%=@talk.speaker.first_name + " " + @talk.speaker.last_name %> </a></p>
-  <center><image src = "http://www.gravatar.com/avatar/<%=@talk.speaker.email%>" ></center>
+  <center><image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(@talk.speaker.email)%>" ></center>
   <br>
   <block><%=@talk.description%></block>
   <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + datetime_am_pm(@talk.event_time) + "!" %>
@@ -19,11 +19,17 @@
      </form>
   <% end %>
   <br>
-  <% if @talk.speaker.id != current_user.id || current_user.events.find_by_talk_id(@talk.id).attending == false %>
+  <% if @talk.speaker.id != current_user.id && current_user.events.find_by_talk_id(@talk.id).attending == false %>
     <button class="upvote" id="<%=@talk.id%>"> COUNT ME IN! </button>
   <% end %>
   <p id="hidden_ajax">See you at the talk!</p>
   <% if current_user.events.find_by_talk_id(@talk.id).attending == true %>
-  <p> You've already voted for this talk. See you there! </p>
+  <p class="red_bold"> You've already voted for this talk. See you there! </p>
   <% end %>
+  <p style="color: red;"> <strong> Here's all the DBC students attending this talk: </strong></p>
+  <% @guests.each do |guest| %>
+    <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(guest.email)%>" >
+  <% end %>
+
+
 </div>

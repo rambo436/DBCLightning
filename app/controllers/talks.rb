@@ -7,18 +7,19 @@ get '/talks/view' do # view all talks
   erb :'talks/all_talks'
 end
 
-get '/talks/view/:talk_id' do #view specific talk
-  @talk = Talk.find(params[:talk_id])
-  erb :'talks/single_talk'
-end
+# get '/talks/view/:talk_id' do #view specific talk
+#   @talk = Talk.find(params[:talk_id])
+#   erb :'talks/single_talk'
+# end
 
 get '/talks' do # view all talks #We removed the /edit preceding
-  @talks = Talk.all.order('created_at DESC') #talk.user won't work until the migration is pushed
+  @talks = Talk.all.order('created_at DESC')
   erb :'talks/all_talks'
 end
 
 get '/talks/:talk_id' do #view specific talk #We removed the /edit preceding
   @talk = Talk.find(params[:talk_id])
+  @guests = @talk.guests
   erb :'talks/single_talk'
 end
 

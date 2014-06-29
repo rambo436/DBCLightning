@@ -22,3 +22,9 @@ $(document).ready(function() {
     });
   });
 });
+
+// <% vote_color = "under_vote" if talk.current_votes < talk.min_rsvp.to_i %>
+// <% vote_color = "over_vote" if talk.current_votes >= talk.min_rsvp.to_i %>
+// <% vote_color = "medium_vote" if (talk.current_votes.to_f / talk.min_rsvp.to_f) >= 0.5 && (talk.current_votes.to_f / talk.min_rsvp.to_f) < 1.0 %>
+//
+// <p id="<%=vote_color%>"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
