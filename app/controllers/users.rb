@@ -24,14 +24,17 @@ get '/users/edit/:id' do #to change password
   erb :"users/edit"
 end
 
-put '/users/edit' do #keep eye on this!
+put '/users/edit' do #submit password
   first = params["password_1"]
   second = params["password_2"]
+  p first
+  p second
+  p first == second
   if first == second
     current_user.update(password: first)
-    @message = "Password successfully changed."
-    erb :"talks/all_talks"
-  end 
+    session[:message] = "Password successfully changed."
+    redirect '/'
+  end
   @messages = "Invalid password confirmation."
   erb :"users/edit"
 end
