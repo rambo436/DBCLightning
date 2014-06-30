@@ -197,14 +197,11 @@ h2#all_talks_header {
 }
 
 .imglist li{
-
   font-size:18px;
   margin-left:25px;
   padding:0px;
-  list-style:url(/images/arrow.png);
   line-height:30px;
   list-style-type: none;
-  /*border: 1px solid black;*/
 }
 
 .button2 a:link{
