@@ -68,7 +68,7 @@ th {
   margin-top: 12px;
   padding-left: 25px;
   text-decoration: none;
-
+  color: white;
 }
 
 #view_other_user li{
@@ -175,7 +175,10 @@ h2#all_talks_header {
 }
 #prof_pic img {
   border-radius: 40px;
+}
 
+.profile {
+    border-radius: 40px;
 }
 
 .subtitle{
