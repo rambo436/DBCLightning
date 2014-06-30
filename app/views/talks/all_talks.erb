@@ -1,3 +1,7 @@
+<% if session[:message] %>
+<p><%= session[:message] %> </p>
+<% session[:message] = "" %>
+<% end %>
 
 <div class="own_talk">
   <a class= "button orange active" href="/users/<%=current_user.id%>/new_talk"> Give your own talk! </a>
@@ -7,23 +11,23 @@
 
   <h2 id="all_talks_header">All upcoming talks</h2>
   <ul class="imglist">
-  <% @talks.each do |talk| %>
-  <% email = gravatar_hash(talk.speaker.email)%>
-  <li id="talk_list">
-    <div id="talk_body">
+  <% if @talks != nil %>
+    <% @talks.each do |talk| %>
+    <% email = gravatar_hash(talk.speaker.email)%>
+    <li id="talk_list">
       <div id="prof_pic">
         <image src="http://www.gravatar.com/avatar/<%=email%>">
       </div>
       <a href="/talks/<%=talk.id%>"><%= talk.title.capitalize%></a><br>
-        by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
-        <p class="subtitle"><%=talk.event_time.to_s[0..9] + " at " + datetime_am_pm(talk.event_time)%></p>
-    </div>
-    <% vote_color = "under_vote" if talk.current_votes < talk.min_rsvp.to_i %>
-    <% vote_color = "over_vote" if talk.current_votes >= talk.min_rsvp.to_i %>
-    <% vote_color = "medium_vote" if (talk.current_votes.to_f / talk.min_rsvp.to_f) >= 0.5 && (talk.current_votes.to_f / talk.min_rsvp.to_f) < 1.0 %>
+      by <a href="/users/<%=talk.speaker.id%>"><%=talk.speaker.first_name + " " + talk.speaker.last_name %></a></br>
+      <p class="subtitle"><%=talk.event_time.to_s[0..9] + " at " + datetime_am_pm(talk.event_time)%></p>
 
-    <p class="vote_banner" id="<%=vote_color%>"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
+      <% vote_color = "under_vote" if talk.current_votes < talk.min_rsvp.to_i %>
+      <% vote_color = "over_vote" if talk.current_votes >= talk.min_rsvp.to_i %>
+      <% vote_color = "medium_vote" if (talk.current_votes.to_f / talk.min_rsvp.to_f) >= 0.5 && (talk.current_votes.to_f / talk.min_rsvp.to_f) < 1.0 %>
 
-  </li><br>
+      <p class="vote_banner" id="<%=vote_color%>"><%=talk.current_votes %> votes out of <%=talk.min_rsvp %> </p>
+    </li><br>
+    <%end%>
   <%end%>
 </div>

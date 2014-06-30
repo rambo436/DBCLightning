@@ -24,11 +24,15 @@
 <body>
   <nav>
     <div id="navigation">
+    <button class="button2"><a href="/">Home</a></button>
     <% if logged_in? %>
-    <button class="button2"><a href="/talks">Home</a></button>
     <button class="button2"><a href="/signout">Signout</a></button>
+    <button class="button2"><a href="/users/edit/<%=current_user.id%>">Change Password</a></button>
     <% end %>
     <button class="button2"><a href="/about">About</a></button>
+    <% if logged_in? %>
+      &nbsp <%= "You are logged in as #{current_user.email}" %>
+    <% end %>
   </div>
   <div>
     <form style="padding-right: 25px;" action="/search" id="search_bar" method="post">
