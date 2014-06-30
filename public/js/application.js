@@ -1,10 +1,6 @@
 $(document).ready(function() {
   $("#hidden_ajax").hide();
-  $("#talk_list").hide();
-  // $(body).mousemove(function(e){
-  //   e.preventDefault();
-  //   $(".imglist li").slideDown(default: 50);
-  // });
+  // $("#talk_list").hide();
   $("body").on("click", ".up_vote, .down_vote", function(e){
     e.preventDefault();
     console.log("CLICK!")

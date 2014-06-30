@@ -171,8 +171,10 @@ h2#all_talks_header {
   list-style-type: none;
   /*border: 1px solid black;*/
 }
-a:link{
-    text-decoration: none;
+
+.button2 a:link{
+  text-decoration: none;
+  color: white;
 }
 
 .imglist li a:link, .imglist li a:visited{
