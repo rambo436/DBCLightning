@@ -1,6 +1,5 @@
 $(document).ready(function() {
   $("#hidden_ajax").hide();
-  $(".up_vote").text("THIS IS A TEST")
   $("body").on("click", ".up_vote, .down_vote", function(e){
     e.preventDefault();
     console.log("CLICK!")
