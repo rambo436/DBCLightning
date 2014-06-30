@@ -6,7 +6,7 @@
   <block><%=@talk.description%></block>
   <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + datetime_am_pm(@talk.event_time) + "!" %>
     <p><% @tags.each do |tag| %>
-      #<a href="/tags/<%=tag.id%>/talks"><%=tag.name %> &nbsp
+      #<a href="/tags/<%=tag.id%>/talks"><%=tag.name %></a> &nbsp
     <% end %></p><br>
     <% if @talk.current_votes < @talk.min_rsvp %>
       <p id="vote_counter"> <%= @talk.current_votes.to_s + " out of " + @talk.min_rsvp.to_s + " votes to go live!" %> </p>
@@ -34,6 +34,7 @@
         <button class="up_vote" id="<%=@talk.id%>" disabled> ATTENDING </button>
         <button class="down_vote" id="<%=@talk.id%>"> NOT ATTENDING </button>
       <% end %>
+
     <% end %>
 
 
