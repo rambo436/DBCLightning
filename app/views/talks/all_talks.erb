@@ -3,9 +3,9 @@
   <a class= "button orange active" href="/users/<%=current_user.id%>/new_talk"> Give your own talk! </a>
 </div>
 
-<div class="container">
+<div class="container" id="all_talks">
 
-  <h2>All upcoming talks</h2>
+  <h2 id="all_talks_header">All upcoming talks</h2>
   <ul class="imglist">
   <% @talks.each do |talk| %>
   <% email = gravatar_hash(talk.speaker.email)%>
