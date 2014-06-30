@@ -20,13 +20,13 @@ $(document).ready(function() {
         $(".down_vote").prop('disabled', true);
         $(".up_vote").prop('disabled', false);
       };
-
       $("#vote_counter").text(response.votes + ' out of ' + response.min_votes + ' votes needed!');
       //$("#vote_counter").text('CURRENT ATTENDING STAT: ' + response.attending);
     });
 
     ajaxRequest.fail(function(response){
       console.log("Fail!");
+      console.log(response.min_votes);
       $(".upvote").fadeOut();
     });
   });

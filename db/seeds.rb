@@ -1,4 +1,3 @@
-require 'faker'
 
 ## Woodchucks seed info ##
 

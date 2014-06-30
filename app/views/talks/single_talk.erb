@@ -22,16 +22,25 @@
         </form></br>
     <% end %>
 
-    <% if current_user.id != @talk.speaker.id && current_user.events.find_by_talk_id(@talk.id) != nil %>
+    <% if current_user.id != @talk.speaker.id %>
+
+      <% if current_user.events.find_by_talk_id(@talk.id) == nil %>
+        <button class="up_vote" id="<%=@talk.id%>"> ATTENDING </button>
+        <button class="down_vote" id="<%=@talk.id%>" disabled> NOT ATTENDING </button>
+      <% end %>
+
+      <% if current_user.events.find_by_talk_id(@talk.id) != nil %>
+
       <% if current_user.events.find_by_talk_id(@talk.id).attending == false %>
         <button class="up_vote" id="<%=@talk.id%>"> ATTENDING </button>
         <button class="down_vote" id="<%=@talk.id%>" disabled> NOT ATTENDING </button>
       <% end %>
 
-      <% if current_user.events.find_by_talk_id(@talk.id).attending == true %>
+      <% if current_user.events.find_by_talk_id(@talk.id).attending == true || current_user.events.find_by_talk_id(@talk.id) == nil %>
         <button class="up_vote" id="<%=@talk.id%>" disabled> ATTENDING </button>
         <button class="down_vote" id="<%=@talk.id%>"> NOT ATTENDING </button>
       <% end %>
+      <%end %>
 
     <% end %>
 
