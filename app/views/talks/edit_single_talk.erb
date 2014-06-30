@@ -12,7 +12,7 @@
 
     <h4>When will you be giving your talk?</h4>
     <input type="date" name="dateof" value= "<%= @talk.event_time.to_s[0..9] %>" min="<%=Time.now.to_s[0..9] %>">
-    <input type="time" name="timeof" value= "<%= @talk.event_time.to_s[11..15] %>" min="09:00" max="17:00">
+    <input type="time" name="timeof" value= "<%= @talk.event_time.to_s[11..15] %>" min="09:00" max="18:00">
 
     <h4>How many guests will make it worth your time?</h4>
     <input type="number" name="min_rsvp" value="<%=@talk.min_rsvp%>" value="0" min="1" max="65">
