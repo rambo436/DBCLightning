@@ -10,3 +10,9 @@ end
 get '/about' do
   erb :about
 end
+
+post '/search' do
+  @talks = Talk.where("title like?", "%#{params["search"]}%")
+  @search = params["search"]
+  erb :search
+end
