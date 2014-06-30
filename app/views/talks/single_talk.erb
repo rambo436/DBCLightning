@@ -15,13 +15,11 @@
     <% end %>
 
     <% if current_user.id == @talk.speaker.id%>
-      <button class="button"><a href="/talks/<%=@talk.id%>/edit">Edit this talk</a></button>
-      <button class="button">
-        <form method="post" action="/talks/<%=@talk.id%>">
+      <a class="button3" href="/talks/<%=@talk.id%>/edit">Edit this talk</a>
+        <form  method="post" action="/talks/<%=@talk.id%>">
           <input type="hidden" name="_method" value="DELETE">
-          <input type="submit" value="Delete this talk">
+          <a class="button3"><input type="submit" value="Delete this talk"></a>
         </form></br>
-      </button>
     <% end %>
 
     <% if current_user.id != @talk.speaker.id && current_user.events.find_by_talk_id(@talk.id) != nil %>
