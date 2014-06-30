@@ -34,7 +34,7 @@ DB_NAME = db.path[1..-1]
 
 ActiveRecord::Base.establish_connection(
   :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-  :host     => db.localhost,
+  :host     => db.host,
   :port     => db.port,
   :username => db.user,
   :password => db.password,
