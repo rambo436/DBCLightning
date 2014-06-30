@@ -31,7 +31,7 @@
     <% end %>
     <button class="button2"><a href="/about">About</a></button>
     <% if logged_in? %>
-      &nbsp <%= "You are logged in as #{current_user.email}" %>
+      &nbsp <%= "Welcome, #{current_user.first_name  }!" %>
     <% end %>
   </div>
   <div>
