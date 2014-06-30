@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $("#hidden_ajax").hide();
-  $(".vote_banner").hide().delay(50).slideDown("slow");
+  $(".vote_banner, #all_talks_header").hide().delay(50).slideDown("slow");
   // $("#talk_list").hide();
   $("body").on("click", ".up_vote, .down_vote", function(e){
     e.preventDefault();
