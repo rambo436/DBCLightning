@@ -1,7 +1,7 @@
 <div class="container">
   <h2><%=@talk.title%></h2>
   <p> by <a href="/users/<%=@talk.speaker.id%>"> <%=@talk.speaker.first_name + " " + @talk.speaker.last_name %> </a></p>
-  <center><image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(@talk.speaker.email)%>" ></center>
+  <center><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(@talk.speaker.email)%>" ></center>
   <br>
   <block><%=@talk.description%></block>
   <p> Come to this talk! It's going down on <%=@talk.event_time.to_s[0..9] + " at " + datetime_am_pm(@talk.event_time) + "!" %>
@@ -40,7 +40,7 @@
     <% @users.each do |user| %>
       <% if user.events.find_by(talk_id: @talk.id) %>
         <% if user.events.find_by(talk_id: @talk.id).attending == true %>
-          <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>" >
+          <a href="/users/<%=user.id%>"><image class="profile" src="http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>" ></a>
         <% end %>
       <% end %>
     <% end %>
