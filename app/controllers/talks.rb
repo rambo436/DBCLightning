@@ -36,7 +36,9 @@ post '/submit' do #create a new talk
   event_time = params[:dateof] + ' ' + params[:timeof]
   p params["minrsvp"]
   talk = Talk.create(speaker_id: current_user.id, title: params["title"], description: params["description"], event_time: event_time, min_rsvp: params["min_rsvp"].to_i)
-  Event.create(user_id: current_user.id, talk_id: talk.id)
+  User.all.each do |user|
+    Event.create(user_id: user.id, talk_id: talk.id, attending: false)
+  end
   talk.valid?
   tags = parse_tags(params["tags"]) #array of tag names
   tags.each do |tag|
@@ -72,14 +74,14 @@ delete '/talks/:talk_id' do #delete a talk
 end
 
 get '/talks/:talk_id/vote' do
+  content_type :json
   @talk = Talk.find(params[:talk_id])
   if current_user.events.find_by_talk_id(@talk.id).attending == false
     @talk.update(current_votes: @talk.current_votes + 1)
     current_user.events.find_by_talk_id(@talk.id).update(attending: true)
-  elsif current_user.events.find_by_talk_id(@talk.id).attending == true
+  else
     @talk.update(current_votes: @talk.current_votes - 1)
     current_user.events.find_by_talk_id(@talk.id).update(attending: false)
   end
-  content_type :json
-  {attending: current_user.events.find_by_talk_id(@talk.id).attending, votes: @talk.current_votes, min_votes: @talk.min_rsvp}.to_json
+  {event: current_user.events.find_by_talk_id(@talk.id), attending: current_user.events.find_by_talk_id(@talk.id).attending, votes: @talk.current_votes, min_votes: @talk.min_rsvp}.to_json
 end
