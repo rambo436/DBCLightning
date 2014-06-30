@@ -2,7 +2,7 @@
   <form action="/talks/<%=@talk.id%>" method="post">
     <input type="hidden" name="_method" value="PUT">
     <h4> Name your talk. </h4>
-    <input cols="40" type="text" name="title" value="<%=@talk.title %>">
+    <input maxlength="40" cols="40" type="text" name="title" value="<%=@talk.title %>">
     <br>
 
     <h4>Give us a little abstract.</h4>
