@@ -1,34 +1,27 @@
 require 'faker'
-# Note I left date and time NULL temporarily.
-# Ben
+
+## Woodchucks seed info ##
+
+User.create(first_name: "Adrian", last_name: "Soghoian", email: "adriansoghoian@gmail.com", password: "test", password_confirmation: "test")
+User.create(first_name: "Alexis", last_name: "Ernst", email: "ldernst@umich.edu", password: "test", password_confirmation: "test")
+User.create(first_name: "Armen", last_name: "Vartan", email: "vartan.armen@gmail.com", password: "test", password_confirmation: "test")
 User.create(first_name: "Ben", last_name: "Brostoff", email: "ben.brostoff@gmail.com", password: "test", password_confirmation: "test")
 User.create(first_name: "Brendan", last_name: "Susens-Jackson", email: "bsusensjackson@gmail.com" , password: "test", password_confirmation: "test")
-User.create(first_name: "Armen", last_name: "Vartan", email: "vartan.armen@gmail.com", password: "test", password_confirmation: "test")
-User.create(first_name: "Kai", last_name: "Prout", email: "kaiprt@gmail.com", password: "test", password_confirmation: "test")
-User.create(first_name: "Natalie", last_name: "Baer", email: "ncbaer@gmail.com", password: "test", password_confirmation: "test")
+User.create(first_name: "Christian", last_name: "Moon", email: "cmoon.nyc@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Gregory", last_name: "Knudsen", email: "greg.knudsen09@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Gregory", last_name: "Piccolo", email: "greg.piccolo@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Ian", last_name: "Shuff", email: "ianvshuff@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Jake", last_name: "Wayne", email: "jhwayne@umich.edu" , password: "test", password_confirmation: "test")
+User.create(first_name: "John", last_name: "Quigley", email: "johnpeterquigley@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Joseph", last_name: "Cohen", email: "jdcohen9@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Kai", last_name: "Prout", email: "kaiprt@gmail.com" , password: "test", password_confirmation: "test")
 User.create(first_name: "Katie", last_name: "Reiner", email: "kreiner@umich.edu", password: "test", password_confirmation: "test")
-User.create(first_name: "Lexi", last_name: "Ernst", email: "ldernst@umich.edu", password: "test", password_confirmation: "test")
 User.create(first_name: "Ken", last_name: "Mendonca", email: "mendoca.kr@gmail.com", password: "test", password_confirmation: "test")
+User.create(first_name: "Matthieu", last_name: "Gavaudan", email: "mlg2199@columbia.edu" , password: "test", password_confirmation: "test")
 User.create(first_name: "Drew", last_name: "Teter", email: "mteter13@gmail.com" , password: "test", password_confirmation: "test")
-
-# Kai
-50.times{ Talk.create(speaker_id: rand(1..User.all.size), title: Faker::Company.bs, description: Faker::Company.bs, min_rsvp: rand(5..15))}
-
-# Armen
-tag_names = ["Math", "Politics", "Meta-skills", "Ruby", "Python", "JavaScript",
-  "Pyschology", "Engineering Empathy", "Machine Code", "Other Languages", "Other"]
-tag_names.each{ |tag| Tag.create(name: tag) }
-
-# Creating joins
-# Hashtags
-talks = Talk.all
-tags = Tag.all
-100.times{ Hashtag.create(talk_id: rand(1..talks.size), tag_id: rand(1..tags.size)) }
-# Events
-talks = Talk.all
-users = User.all
-talks.each do |talk|
-  users.each do |user|
-    Event.create(user_id: user.id, talk_id: talk.id, attending: false)
-  end
-end
+User.create(first_name: "Natalie", last_name: "Baer", email: "ncbaer@gmail.com", password: "test", password_confirmation: "test")
+User.create(first_name: "Richard", last_name: "Macias", email: "rjny86@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Siddharth", last_name: "Patel", email: "sidpatel13@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Stella", last_name: "Kim", email: "stellajkimm@gmail.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Victor", last_name: "Schaeperkoetter", email: "victor.schaeperkoetter@yahoo.com" , password: "test", password_confirmation: "test")
+User.create(first_name: "Antonio", last_name: "Perez", email: "rantoniops@gmail.com" , password: "test", password_confirmation: "test")
