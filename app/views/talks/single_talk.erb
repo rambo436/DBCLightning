@@ -42,7 +42,7 @@
     <% @users.each do |user| %>
       <% if user.events.find_by(talk_id: @talk.id) %>
         <% if user.events.find_by(talk_id: @talk.id).attending == true %>
-          <image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>" >
+          <a href="/users/<%=user.id%>"><image src = "http://www.gravatar.com/avatar/<%=gravatar_hash(user.email)%>" ></a>
         <% end %>
       <% end %>
     <% end %>
