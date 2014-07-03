@@ -14,3 +14,7 @@ As a user... I would like to be able to:
 -Set a minimum amount of attendies in order to schedule talk
 -Set a maximum amount of guests per talk
 -Add tags to talks I create
+
+
+HEROKU APP!
+http://blooming-anchorage-1102.herokuapp.com/users/signin
